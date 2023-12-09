@@ -1,5 +1,6 @@
 require 'capybara/cucumber'
 require 'rspec'
+require 'rmagick'
 
 Capybara.default_driver = :selenium_chrome # You can change this based on your preferred driver
 Capybara.default_max_wait_time = 10
