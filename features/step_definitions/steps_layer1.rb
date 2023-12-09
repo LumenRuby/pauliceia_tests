@@ -1,5 +1,8 @@
 And("I close the beta warning message") do
-  find(:xpath, '/html/body/div/section/div/section/div/section[3]/header/button/i', wait: 5).click
+  close_button = find(:xpath, '/html/body/div/section/div/section/div/section[3]/header/button/i')
+  
+   # Click the button to close the layer window
+  close_button.click
 end
 
 And("I open the Layer sub-section") do
@@ -23,5 +26,35 @@ And("I select article {int} and press the associated button") do |article_number
 end
 
 And("I close the layer window") do
-  find(:xpath, '/html/body/div[1]/section/div/section/div/div[2]/div/div/div/div[1]/button/span', wait: 5).click
+  # Find the button to close the layer window
+  close_button = find(:xpath, '/html/body/div[1]/section/div/section/div/div[2]/div/div/div/div[1]/button/span', wait: 5)
+
+  close_button.click
+
+  max_wait_time = 10
+
+  # Wait for the button to become invisible (layer window to fully close)
+  max_wait_time.times do
+    break unless close_button.visible?
+
+    sleep 1
+  end
+end
+
+Then("the screen should be the same as {string}") do |reference_screenshot_path|
+  # Capture a screenshot of the current page
+  screenshot_path = 'screenshots/current_screenshot.png'
+  page.save_screenshot(screenshot_path, full: true)
+
+  # Load the images for comparison using RMagick
+  current_image = Magick::Image.read(screenshot_path).first
+  reference_image = Magick::Image.read(reference_screenshot_path).first
+
+  # Calculate the Mean Squared Error (MSE) between the images
+  mse = current_image.compare_channel(reference_image, Magick::MeanSquaredErrorMetric)[1]
+
+  puts "Mean Squared Error: #{mse}"
+
+  # Assert that the MSE is close to 0 (adjust the threshold as needed)
+  expect(mse).to be_within(0.095).of(0)
 end
