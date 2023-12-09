@@ -9,9 +9,6 @@ Requires:
 
 -Rails, Bundler
 
-You can install the above versions globally on your machine or through [NVM](https://github.com/nvm-sh/nvm).
-
-
 ## Install
 
 sudo apt-get install libmagickwand-dev
