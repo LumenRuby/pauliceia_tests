@@ -30,3 +30,11 @@ Then("I should see the message after title {string}:") do |expected_title, expec
   expect(related_card_text_div.text.strip).to eq(expected_message_after_title)
 end
 
+Then("I should see the citation instruction:") do |expected_citation_instruction|
+  # Find the div containing the citation instruction using the provided XPath
+  citation_instruction_div = find(:xpath, '/html/body/div/section/div/section/div[2]/header/div/div/div/div/div')
+
+  # Compare the text content within the div with the expected citation instruction
+  expect(citation_instruction_div.text.strip).to eq(expected_citation_instruction.strip)
+end
+
