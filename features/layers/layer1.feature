@@ -5,7 +5,9 @@ Feature: Testing Layer visuals
     When I press the "Mapa" button to access the "Mapa" section
     And I close the beta warning message
     And I open the Layer sub-section
-    And I press the "Adicionar e remover camadas" button to access the "Layer" section
+    And I press the Add and Delete Layers button
+    And I select article 1 and press the associated button 
+    And I close the layer window
     Then I should see the message after title "Quem desenvolveu?": 
       """
       O projeto é uma parceria entre a UNIFESP (campi de Guarulhos e São José dos Campos), o Arquivo do Estado de SP, o INPE (Instituto Nacional de Pesquisas Espaciais) e a Emory University (Estados Unidos).
