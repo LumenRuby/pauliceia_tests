@@ -1,21 +1,18 @@
-# Testes Pauliceia 2.0 front-end
+# pauliceia front-end
 
-Repositório contendo os testes criados no Ruby para o front-end do site Pauliceia 2.0, tal como conseguimos realizá-los.
+Pauliceia 2.0 project front-end.
 
 
 ## Dependencies
 
 Requires:
 
--Rails, Bundler, Cucumber, Capybara, Selenium.
+-Rails, Bundler
 
 ## Install
 
 sudo apt-get install libmagickwand-dev
 bundle install
-
-## Testes funcionando atualmente:
-Layers, About, Register e Login.
 
 ## Run
 
