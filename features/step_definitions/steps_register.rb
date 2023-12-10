@@ -1,7 +1,7 @@
 require 'selenium-webdriver'
 
 Given("I am on the login page") do
-    visit '/portal/login'
+    visit 'https://pauliceia.unifesp.br/portal/login'
   end
   
   When('I click on the register button') do
